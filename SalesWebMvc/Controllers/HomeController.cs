@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SalesWebMvc.Models.ViewModels;
 using SalesWebMvc.Models;
 using System.Diagnostics;
 
@@ -18,11 +19,11 @@ namespace SalesWebMvc.Controllers
             return View();
         }
 
-        public IActionResult Teste()
-        {
-            //return Ok("ok");
-            return NotFound("asdfg");
-        }
+        //public IActionResult Teste()
+        //{
+        //    //return Ok("ok");
+        //    return NotFound("asdfg");
+        //}
 
         public IActionResult About()
         {
