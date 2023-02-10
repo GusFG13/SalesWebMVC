@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SalesWebMvc.Data;
@@ -15,7 +16,13 @@ namespace SalesWebMvc
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            //Registra o serviço no sistema de injeção de dependencia
+            builder.Services.AddScoped<SeedingService>();
+            
+
             var app = builder.Build();
+
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -26,6 +33,8 @@ namespace SalesWebMvc
             }
 
             app.UseHttpsRedirection();
+
+            SeedDatabase(); //can be placed above app.UseStaticFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -37,6 +46,17 @@ namespace SalesWebMvc
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
+
+            //https://stackoverflow.com/questions/70581816/how-to-seed-data-in-net-core-6-with-entity-framework
+            void SeedDatabase() //can be placed at the very bottom under app.Run()
+            {
+                using (var scope = app.Services.CreateScope())
+                {
+                    var dbInitializer = scope.ServiceProvider.GetRequiredService<SeedingService>();
+                    dbInitializer.Seed();
+                }
+            }
+
         }
     }
 }

@@ -25,10 +25,7 @@ namespace SalesWebMvc.Migrations
             modelBuilder.Entity("SalesWebMvc.Models.Department", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -42,10 +39,7 @@ namespace SalesWebMvc.Migrations
             modelBuilder.Entity("SalesWebMvc.Models.SalesRecord", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<double>("Amount")
                         .HasColumnType("float");
@@ -69,10 +63,7 @@ namespace SalesWebMvc.Migrations
             modelBuilder.Entity("SalesWebMvc.Models.Seller", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<double>("BaseSalary")
                         .HasColumnType("float");

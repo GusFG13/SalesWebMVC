@@ -1,9 +1,11 @@
 ﻿using SalesWebMvc.Models.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SalesWebMvc.Models
 {
     public class SalesRecord
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public double Amount { get; set; }
