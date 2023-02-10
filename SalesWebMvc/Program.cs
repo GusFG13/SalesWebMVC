@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SalesWebMvc.Data;
+using SalesWebMvc.Services;
 
 namespace SalesWebMvc
 {
@@ -18,7 +19,7 @@ namespace SalesWebMvc
 
             //Registra o serviço no sistema de injeção de dependencia
             builder.Services.AddScoped<SeedingService>();
-            
+            builder.Services.AddScoped<SellerService>();
 
             var app = builder.Build();
 
