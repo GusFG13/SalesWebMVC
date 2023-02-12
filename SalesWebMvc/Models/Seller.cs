@@ -12,10 +12,12 @@ namespace SalesWebMvc.Models
         [Required(ErrorMessage = "{0} required")] // {0} retorna Name
         [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} size must be between {2} and {1}")]
         public string Name { get; set; }
+
         [Required(ErrorMessage = "{0} required")] // {0} retorna Email
         [EmailAddress(ErrorMessage = "Enter a valid email")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
         [Required(ErrorMessage = "{0} required")] // {0} retorna Birth Date
         [Display(Name = "Birth Date")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
@@ -27,6 +29,7 @@ namespace SalesWebMvc.Models
         [Display(Name = "Base Salary")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         public double BaseSalary { get; set; }
+
         public Department Department { get; set; }
         public int DepartmentId { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
