@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SalesWebMvc.Data;
 using SalesWebMvc.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+
 
 namespace SalesWebMvc
 {
@@ -14,6 +17,23 @@ namespace SalesWebMvc
             builder.Services.AddDbContext<SalesWebMvcContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("SalesWebMvcContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMvcContext' not found.")));
 
+            //var enUs = new CultureInfo("en-US");
+            //var localizationOptions = new RequestLocalizationOptions
+            //{
+            //    DefaultRequestCulture = new RequestCulture(enUs),
+            //    SupportedCultures = new List<CultureInfo> { enUs },
+            //    SupportedUICultures = new List<CultureInfo> { enUs }
+            //};
+
+
+            //var supportedCultures = new[] { "en-US", "fr", "de" };
+            var supportedCultures = new[] { "en-US" };
+
+            var localizationOptions = new RequestLocalizationOptions()
+                .SetDefaultCulture(supportedCultures[0])
+                .AddSupportedCultures(supportedCultures)
+                .AddSupportedUICultures(supportedCultures);
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -23,6 +43,8 @@ namespace SalesWebMvc
             builder.Services.AddScoped<DepartmentService>();
 
             var app = builder.Build();
+
+            app.UseRequestLocalization(localizationOptions);
 
 
 
