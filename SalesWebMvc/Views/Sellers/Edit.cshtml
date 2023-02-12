@@ -1,0 +1,45 @@
+﻿@model SalesWebMvc.Models.ViewModels.SellerFormViewModel;
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Seller</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+
+            <input type="hidden" asp-for="Seller.Id" />
+
+            <div class="input-group mb-3">
+                <label asp-for="Seller.Name" class="input-group-text" id="inputGroup-sizing-default"></label>
+                <input asp-for="Seller.Name" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <label asp-for="Seller.Email" class="input-group-text" id="inputGroup-sizing-default"></label>
+                <input asp-for="Seller.Email" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <label asp-for="Seller.BirthDate" class="input-group-text" id="inputGroup-sizing-default"></label>
+                <input asp-for="Seller.BirthDate" class="form-control" type="date">
+            </div>
+            <div class="input-group mb-3">
+                <label asp-for="Seller.BaseSalary" class="input-group-text" id="inputGroup-sizing-default"></label>
+                <input asp-for="Seller.BaseSalary" class="form-control">
+            </div>
+            <div class="input-group">
+                <label asp-for="Seller.DepartmentId" class="input-group-text" id="inputGroup-sizing-default"></label>
+                <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments, "Id","Name"))" class="form-control"></select>
+            </div>
+            <div class="input-group mb-3">
+                <input type="submit" value="Save" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
