@@ -19,7 +19,7 @@ namespace SalesWebMvc.Services
 
         public void Insert(Seller obj)
         {
-            obj.Department = _context.Department.First(); // atribui o primeiro departamento da tabela (solução temporária)
+            //obj.Department = _context.Department.First(); // atribui o primeiro departamento da tabela (solução temporária)
             _context.Add(obj);
             _context.SaveChanges();
         }

@@ -1,4 +1,4 @@
-﻿@model SalesWebMvc.Models.Seller;
+﻿@model SalesWebMvc.Models.ViewModels.SellerFormViewModel;
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,20 +15,24 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div class="input-group mb-3">
-                <label asp-for="Name" class="input-group-text" id="inputGroup-sizing-default"></label>
-                <input asp-for="Name" class="form-control">
+                <label asp-for="Seller.Name" class="input-group-text" id="inputGroup-sizing-default"></label>
+                <input asp-for="Seller.Name" class="form-control">
             </div>
             <div class="input-group mb-3">
-                <label asp-for="Email" class="input-group-text" id="inputGroup-sizing-default"></label>
-                <input asp-for="Email" class="form-control">
+                <label asp-for="Seller.Email" class="input-group-text" id="inputGroup-sizing-default"></label>
+                <input asp-for="Seller.Email" class="form-control">
             </div>
             <div class="input-group mb-3">
-                <label asp-for="BirthDate" class="input-group-text" id="inputGroup-sizing-default"></label>
-                <input asp-for="BirthDate" class="form-control" type="date">
+                <label asp-for="Seller.BirthDate" class="input-group-text" id="inputGroup-sizing-default"></label>
+                <input asp-for="Seller.BirthDate" class="form-control" type="date">
             </div>
             <div class="input-group mb-3">
-                <label asp-for="BaseSalary" class="input-group-text" id="inputGroup-sizing-default"></label>
-                <input asp-for="BaseSalary" class="form-control">
+                <label asp-for="Seller.BaseSalary" class="input-group-text" id="inputGroup-sizing-default"></label>
+                <input asp-for="Seller.BaseSalary" class="form-control">
+            </div>
+            <div class="input-group">
+                <label asp-for="Seller.DepartmentId" class="input-group-text" id="inputGroup-sizing-default"></label>
+                <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments, "Id","Name"))" class="form-control"></select>
             </div>
             <div class="input-group mb-3">
                 <input type="submit" value="Create" class="btn btn-primary">

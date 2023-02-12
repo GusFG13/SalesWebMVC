@@ -20,6 +20,7 @@ namespace SalesWebMvc
             //Registra o serviço no sistema de injeção de dependencia
             builder.Services.AddScoped<SeedingService>();
             builder.Services.AddScoped<SellerService>();
+            builder.Services.AddScoped<DepartmentService>();
 
             var app = builder.Build();
 
